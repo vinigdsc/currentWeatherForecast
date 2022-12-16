@@ -53,6 +53,41 @@ const App = () => {
             {data.current ? <p>{data.current.condition.text}</p> : null}
           </div>
         </div>
+
+        <div className="sun">
+          <div className="box">
+            <div>
+              <h1>Fase da lua:</h1>
+              {data.current ? (
+                <p>{data.forecast.forecastday[0].astro.moon_phase}</p>
+              ) : null}
+            </div>
+          </div>
+          <div className="box">
+            <h1>Nascer da Lua:</h1>
+            {data.current ? (
+              <p>{data.forecast.forecastday[0].astro.moonrise}</p>
+            ) : null}
+          </div>
+          <div className="box">
+            <h1>Por da Lua:</h1>
+            {data.current ? (
+              <p>{data.forecast.forecastday[0].astro.moonset}</p>
+            ) : null}
+          </div>
+          <div className="box">
+            <h1>Nascer do Sol:</h1>
+            {data.current ? (
+              <p>{data.forecast.forecastday[0].astro.sunrise}</p>
+            ) : null}
+          </div>
+          <div className="box">
+            <h1>Por do Sol:</h1>
+            {data.current ? (
+              <p>{data.forecast.forecastday[0].astro.sunset}</p>
+            ) : null}
+          </div>
+        </div>
         <div className="bottom">
           <div className="feels">
             <p className="bold">

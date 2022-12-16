@@ -105,3 +105,31 @@ h1 {
 .bold {
   font-weight: 700;
 }
+
+.sun {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-between;
+  position: relative;
+  font-size: 1rem;
+  gap: 20px;
+}
+
+.sun h1 {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.sun p {
+  font-size: 0.8rem;
+}
+
+.sun .box {
+  margin: 1rem auto;
+  border: 3px solid white;
+  padding: 1rem;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
