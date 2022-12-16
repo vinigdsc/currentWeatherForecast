@@ -4,17 +4,29 @@ import axios from "axios";
 const App = () => {
   const [data, setData] = useState({});
   const [city, setCity] = useState("");
+  const [date, setDate] = useState("");
 
   const URL_KEY = "da6fc6b470d74ecda37172111221312 ";
   const days = 1;
   const url = `http://api.weatherapi.com/v1/forecast.json?key=${URL_KEY}&q=${city}&days=${days}&aqi=no&alerts=no&lang=pt
   `;
 
+  const historyAPI = `http://api.weatherapi.com/v1/history.json?key=da6fc6b470d74ecda37172111221312&q=${city}&dt=${date}&lang=pt
+  `; // yyyy-MM-dd
+
   const handleChange = (event) => {
     setCity(event.target.value);
     axios.get(url).then((response) => {
       setData(response.data);
       console.log(response.data);
+    });
+  };
+
+  const dateChange = (event) => {
+    setDate(event.target.value);
+    axios.get(url).then((response) => {
+      setDate(response.date);
+      console.log("texto", response.date);
     });
   };
 
@@ -27,6 +39,13 @@ const App = () => {
           name="city"
           onChange={handleChange}
           value={city}
+        />
+        <input
+          type="date"
+          id="date"
+          name="date"
+          onChange={dateChange}
+          value={date}
         />
       </div>
       <div className="container">
