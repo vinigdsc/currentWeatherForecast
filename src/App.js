@@ -1,41 +1,81 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function App() {
+const App = () => {
+  const [data, setData] = useState({});
+  const [city, setCity] = useState("");
+
   const URL_KEY = "da6fc6b470d74ecda37172111221312 ";
-  const city = "Sao paulo";
   const days = 1;
-  const url = `http://api.weatherapi.com/v1/forecast.json?key=${URL_KEY}&q=${city}&days=${days}&aqi=no&alerts=no
+  const url = `http://api.weatherapi.com/v1/forecast.json?key=${URL_KEY}&q=${city}&days=${days}&aqi=no&alerts=no&lang=pt
   `;
+
+  const handleChange = (event) => {
+    setCity(event.target.value);
+    axios.get(url).then((response) => {
+      setData(response.data);
+      console.log(response.data);
+    });
+  };
 
   return (
     <div className="app">
+      <div className="search">
+        <input
+          type="text"
+          id="city"
+          name="city"
+          onChange={handleChange}
+          value={city}
+        />
+      </div>
       <div className="container">
         <div className="top">
           <div className="location">
-            <p>Dallas</p>
+            {data.location ? <h2>{data.location.name} </h2> : null}
+          </div>
+          <div className="location location__description">
+            {data.location ? <h3>{data.location.region} </h3> : null}
+          </div>
+          <div className="location location__description">
+            {data.location ? <h4>{data.location.country} </h4> : null}
           </div>
           <div className="temp">
-            <h1>30°C</h1>
+            {data.current ? <h1>{data.current.temp_c}°C</h1> : null}
           </div>
+          <div className="temp">
+            {data.current ? (
+              <img src={data.current.condition.icon} alt="" />
+            ) : null}
+          </div>
+
           <div className="description">
-            <p>Clouds</p>
+            {data.current ? <p>{data.current.condition.text}</p> : null}
           </div>
         </div>
         <div className="bottom">
           <div className="feels">
-            <p>30°C</p>
+            <p className="bold">
+              {data.current ? <p>{data.current.feelslike_c} °C</p> : null}{" "}
+            </p>
+            <p>Sensação termica</p>
           </div>
           <div className="humidity">
-            <h1>20%</h1>
+            <p className="bold">
+              {data.current ? <p>{data.current.humidity}%</p> : null}
+            </p>
+            <p>Umidade</p>
           </div>
           <div className="wind">
-            <h1>20kph</h1>
+            <p className="bold">
+              {data.current ? <p>{data.current.wind_kph} KM/H</p> : null}
+            </p>
+            <p>Velocidade do vento</p>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;
