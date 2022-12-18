@@ -11,6 +11,15 @@ const App = () => {
   const url = `http://api.weatherapi.com/v1/forecast.json?key=${URL_KEY}&q=${city}&days=${days}&aqi=no&alerts=no&lang=pt
   `;
 
+  const historydate = "19/12/2022";
+
+  const historyAPI = `http://api.weatherapi.com/v1/history.json?key=${URL_KEY}&q=${city}&dt=${historydate}
+  `;
+
+  axios.get(historyAPI).then((r) => {
+    console.log(r.history);
+  });
+
   const handleChange = (event) => {
     setCity(event.target.value);
     axios.get(url).then((response) => {
@@ -30,7 +39,7 @@ const App = () => {
           onChange={handleChange}
           value={city}
         />
-        <div>
+        <div className="date">
           <h5>Data selecionada: {date}</h5>
           <input type="date" onChange={(e) => setDate(e.target.value)} />
         </div>
@@ -41,15 +50,17 @@ const App = () => {
             {data.location ? <h2>{data.location.name} </h2> : null}
           </div>
           <div className="location location__description">
-            {data.location ? <h3>{data.location.region} </h3> : null}
-          </div>
-          <div className="location location__description">
-            {data.location ? <h4>{data.location.country} </h4> : null}
+            {data.location ? (
+              <h3>
+                {data.location.region}, {data.location.country}
+              </h3>
+            ) : null}
           </div>
           <div className="temp">
             {data.current ? <h1>{data.current.temp_c}°C</h1> : null}
           </div>
           <div className="temp">
+            {data.current ? <h2>{data.current.condition.text}</h2> : null}
             <div>
               {data.current ? (
                 <img src={data.current.condition.icon} alt="" />
@@ -57,9 +68,7 @@ const App = () => {
             </div>
           </div>
 
-          <div className="description">
-            {data.current ? <p>{data.current.condition.text}</p> : null}
-          </div>
+          <div className="description"></div>
         </div>
 
         <div className="sun">
@@ -116,6 +125,78 @@ const App = () => {
             <p>Velocidade do vento</p>
           </div>
         </div>
+        <article className="grid-wrap">
+          <div className="card">
+            <div className="card-head">
+              {data.forecast ? (
+                <h3>{data.forecast.forecastday[0].date}</h3>
+              ) : null}
+            </div>
+            <div className="card-body">
+              <p>Lipsum Ipsum Tipsum</p>
+            </div>
+          </div>
+          <div className="card">
+            <div className="card-head">
+              {data.forecast ? (
+                <h3>{data.forecast.forecastday[0].date}</h3>
+              ) : null}{" "}
+            </div>
+            <div className="card-body">
+              <p>Lipsum Ipsum Tipsum</p>
+            </div>
+          </div>
+          <div className="card">
+            <div className="card-head">
+              {data.forecast ? (
+                <h3>{data.forecast.forecastday[0].date}</h3>
+              ) : null}
+            </div>
+            <div className="card-body">
+              <p>Lipsum Ipsum Tipsum</p>
+            </div>
+          </div>
+          <div className="card">
+            <div className="card-head">
+              {data.forecast ? (
+                <h3>{data.forecast.forecastday[0].date}</h3>
+              ) : null}
+            </div>
+            <div className="card-body">
+              <p>Lipsum Ipsum Tipsum</p>
+            </div>
+          </div>
+          <div className="card">
+            <div className="card-head">
+              {data.forecast ? (
+                <h3>{data.forecast.forecastday[0].date}</h3>
+              ) : null}
+            </div>
+            <div className="card-body">
+              <p>Lipsum Ipsum Tipsum</p>
+            </div>
+          </div>
+          <div className="card">
+            <div className="card-head">
+              {data.forecast ? (
+                <h3>{data.forecast.forecastday[0].date}</h3>
+              ) : null}
+            </div>
+            <div className="card-body">
+              <p>Lipsum Ipsum Tipsum</p>
+            </div>
+          </div>
+          <div className="card">
+            <div className="card-head">
+              {data.forecast ? (
+                <h3>{data.forecast.forecastday[0].date}</h3>
+              ) : null}
+            </div>
+            <div className="card-body">
+              <p>Lipsum Ipsum Tipsum</p>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   );

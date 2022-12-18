@@ -42,7 +42,10 @@ h1 {
 
 .app .search {
   text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 1rem;
+  gap: 20px;
 }
 
 .app input {
@@ -54,13 +57,23 @@ h1 {
   background: rgba(255, 255, 255, 0.1);
 }
 
+.app .date input {
+  font-size: 0.8rem;
+  padding: 0.5rem;
+  font-weight: 300;
+}
+.app h5 {
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+
 ::placeholder {
   color: rgba(white, white, white, 0.2);
 }
 
 .container {
-  max-width: 700px;
-  height: 600px;
+  max-width: 1000px;
+  height: 800px;
   margin: auto;
   padding: 0 1rem;
   position: relative;
@@ -79,16 +92,33 @@ h1 {
   display: flex;
   justify-content: center;
 }
+
+.app .location h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.app .location h3 {
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
 .app .top .temp {
   display: flex;
+  text-align: center;
   justify-content: center;
+  gap: 20px;
+}
+.app .temp h2 {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.app .top img {
+  position: relative;
 }
 
 .app .description {
   position: relative;
-  right: -90%;
-  transform-origin: 0 0;
-  transform: rotate(270deg);
 }
 
 .app .bottom {
@@ -132,4 +162,37 @@ h1 {
   padding: 1rem;
   border-radius: 3px;
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+.grid-wrap {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  display: grid;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 0.5em;
+  transition: 0.3s;
+  padding: 0.5em 0.5em;
+  grid-template-rows: 50px 100px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+}
+
+.card-head {
+  background-color: #42a5f5;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.card-body {
+  text-align: center;
+  margin-bottom: 2em;
 }
