@@ -71,40 +71,6 @@ const App = () => {
           <div className="description"></div>
         </div>
 
-        <div className="sun">
-          <div className="box">
-            <div>
-              <h1>Fase da lua:</h1>
-              {data.current ? (
-                <p>{data.forecast.forecastday[0].astro.moon_phase}</p>
-              ) : null}
-            </div>
-          </div>
-          <div className="box">
-            <h1>Nascer da Lua:</h1>
-            {data.current ? (
-              <p>{data.forecast.forecastday[0].astro.moonrise}</p>
-            ) : null}
-          </div>
-          <div className="box">
-            <h1>Por da Lua:</h1>
-            {data.current ? (
-              <p>{data.forecast.forecastday[0].astro.moonset}</p>
-            ) : null}
-          </div>
-          <div className="box">
-            <h1>Nascer do Sol:</h1>
-            {data.current ? (
-              <p>{data.forecast.forecastday[0].astro.sunrise}</p>
-            ) : null}
-          </div>
-          <div className="box">
-            <h1>Por do Sol:</h1>
-            {data.current ? (
-              <p>{data.forecast.forecastday[0].astro.sunset}</p>
-            ) : null}
-          </div>
-        </div>
         <div className="bottom">
           <div className="feels">
             <p className="bold">
@@ -124,77 +90,107 @@ const App = () => {
             </p>
             <p>Velocidade do vento</p>
           </div>
+          <div className="temp">
+            <p className="bold">
+              {data.current ? (
+                <p>{data.forecast.forecastday[0].day.maxtemp_c} °C</p>
+              ) : null}
+            </p>
+            <p>Temperatura maxima</p>
+          </div>
+          <div className="temp">
+            <p className="bold">
+              {data.current ? (
+                <p>{data.forecast.forecastday[0].day.mintemp_c} °C</p>
+              ) : null}
+            </p>
+            <p>Temperatura minima</p>
+          </div>
+        </div>
+        <div className="bottom">
+          <div className="moon">
+            <p className="bold">
+              {data.current ? (
+                <p>{data.forecast.forecastday[0].astro.moon_phase}</p>
+              ) : null}
+            </p>
+            <p>Fase da Lua</p>
+          </div>
+          <div className="moon">
+            <p className="bold">
+              {data.current ? (
+                <p>{data.forecast.forecastday[0].astro.moonrise}</p>
+              ) : null}
+            </p>
+            <p>Nascer da Lua</p>
+          </div>
+          <div className="moon">
+            <p className="bold">
+              {data.current ? (
+                <p>{data.forecast.forecastday[0].astro.moonset}</p>
+              ) : null}
+            </p>
+            <p>Por da Lua</p>
+          </div>
+          <div className="sun">
+            <p className="bold">
+              {data.current ? (
+                <p>{data.forecast.forecastday[0].astro.sunrise}</p>
+              ) : null}
+            </p>
+            <p>Nascer do Sol</p>
+          </div>
+          <div className="sun">
+            <p className="bold">
+              {data.current ? (
+                <p>{data.forecast.forecastday[0].astro.sunset}</p>
+              ) : null}
+            </p>
+            <p>Por do Sol</p>
+          </div>
         </div>
         <article className="grid-wrap">
           <div className="card">
             <div className="card-head">
-              {data.forecast ? (
-                <h3>{data.forecast.forecastday[0].date}</h3>
-              ) : null}
+              <h1>Segunda-feira</h1>
             </div>
-            <div className="card-body">
-              <p>Lipsum Ipsum Tipsum</p>
-            </div>
+            <div className="card-body"></div>
           </div>
           <div className="card">
             <div className="card-head">
-              {data.forecast ? (
-                <h3>{data.forecast.forecastday[0].date}</h3>
-              ) : null}{" "}
+              <h1>Terça-feira</h1>
             </div>
-            <div className="card-body">
-              <p>Lipsum Ipsum Tipsum</p>
-            </div>
+            <div className="card-body"></div>
           </div>
           <div className="card">
             <div className="card-head">
-              {data.forecast ? (
-                <h3>{data.forecast.forecastday[0].date}</h3>
-              ) : null}
+              <h1>Quarta-feira</h1>
             </div>
-            <div className="card-body">
-              <p>Lipsum Ipsum Tipsum</p>
-            </div>
+            <div className="card-body"></div>
           </div>
           <div className="card">
             <div className="card-head">
-              {data.forecast ? (
-                <h3>{data.forecast.forecastday[0].date}</h3>
-              ) : null}
+              <h1>Quinta-feira</h1>
             </div>
-            <div className="card-body">
-              <p>Lipsum Ipsum Tipsum</p>
-            </div>
+            <div className="card-body"></div>
           </div>
           <div className="card">
             <div className="card-head">
-              {data.forecast ? (
-                <h3>{data.forecast.forecastday[0].date}</h3>
-              ) : null}
+              <h1>Sexta-feira</h1>
             </div>
-            <div className="card-body">
-              <p>Lipsum Ipsum Tipsum</p>
-            </div>
+            <div className="card-body"></div>
           </div>
           <div className="card">
             <div className="card-head">
-              {data.forecast ? (
-                <h3>{data.forecast.forecastday[0].date}</h3>
-              ) : null}
+              <h1>Sabado</h1>
             </div>
-            <div className="card-body">
-              <p>Lipsum Ipsum Tipsum</p>
-            </div>
+            <div className="card-body"></div>
           </div>
           <div className="card">
             <div className="card-head">
-              {data.forecast ? (
-                <h3>{data.forecast.forecastday[0].date}</h3>
-              ) : null}
+              <h1>Domingo</h1>
             </div>
-            <div className="card-body">
-              <p>Lipsum Ipsum Tipsum</p>
-            </div>
+            <div className="card-body"></div>
           </div>
         </article>
       </div>
